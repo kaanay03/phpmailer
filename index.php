@@ -13,11 +13,9 @@
 <div class="container">
 <form action="#" method="post" enctype="multipart/form-data">
 <fieldset>
-<font size="5" color="Blue"><a href="http://gauravg.ga/" target="_blank">
-<marquee bgcolor="white" behavior="alternate"
-onmouseover="this.stop();" onmouseout="this.start();">
-An E-mail Spoofer with Attachments by Gaurav Gupta
-</marquee></font></a>
+<font size="5" color="Blue">
+  <center>EMAIL SPOOFER</center>
+</font></a>
 <?php
 if(isset($_POST['submit']))
 {
@@ -84,8 +82,7 @@ else{
 <input id="button" type="submit" name="submit" value="Send" class="pulse-button">
 </fieldset>
 </form>
-  <div id="foot"><center>© Copyright | Made by Gaurav Gupta 
-❤️ | All rights reserved.</center></div>
+  <div id="foot"><center>Copyright © 2018 | All rights reserved.</center></div>
 </div>
 </body>
 </html>
