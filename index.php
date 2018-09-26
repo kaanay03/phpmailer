@@ -13,17 +13,26 @@
 <div class="container">
 <form action="#" method="post" enctype="multipart/form-data">
 <fieldset>
-<font size="5" color="Blue">
-  <center>EMAIL SPOOFER</center>
+<font size="5" color="Blue"><a href="https://kaan.tech/spoof" target="_blank">
+<center>EMAIL SPOOFER</center>
 </font></a>
 <?php
 if(isset($_POST['submit']))
 {
 $to = $_POST['to'];
-$from = $_POST['from'];
+$fromemail = $_POST['from'];
+$fromname = $_POST['name'];
 $subject = $_POST['subject'];
+$replyto = $_POST['replyto'];
 $msg = $_POST['msg'];
-$headers = "From: ".$_POST['from']. "\r\n" ."CC:".$_POST['cc']. "\r\n" ."Content-Type: text/html; charset=iso-8859-1\n";
+$from = "From: ";
+$lt = "<";
+$gt = ">";
+$sp = " ";
+$headers = "From: ".$fromname.$sp.$lt.$fromemail.$gt. "\r\n" ."CC:".$_POST['cc']. "\r\n" ."Content-Type: text/html; charset=iso-8859-1\n";
+$headers .= "MIME-Version: $fromname\r\n";
+$headers .= "Reply-To: ".$replyto. "\r\n";
+
 $file_tmp_name = $_FILES['file']['tmp_name'];
     $file_name = $_FILES['file']['name'];
     $file_size = $_FILES['file']['size'];
@@ -44,7 +53,7 @@ else{
         //header
         $headers = "MIME-Version: 1.0\r\n"; 
         $headers .= "From:".$from."\r\n"; 
-        $headers .= "Reply-To: ".$to."" . "\r\n";
+        //$headers .= "Reply-To: ".$to."" . "\r\n";
         $headers .= "Content-Type: multipart/mixed; boundary = $boundary\r\n\r\n"; 
         
         //plain text 
@@ -66,10 +75,15 @@ else{
 }
 ?>
 <br>
+<label for="fromName"><b><font color="red"><sup></sup></font>Name:</b></label>
+<input type="text" placeholder="From Name" name="name" id="name"><br>
 <label for="fromemailAddress"><b><font color="red"><sup>*</sup></font>From:</b></label>
-<input type="email" placeholder="Enter a E-mail Address from which you want to send email or Name" name="from" id="fromemailAddress" required><br>
+<input type="email" placeholder="Enter a E-mail Address from which you want to send the email" name="from" id="fromemailAddress" required><br>
+
 <label for="cc"><b>CC:</b></label>
 <input type="text" placeholder="Enter CC" name="cc" id="cc">
+<label for="replyto"><b>Reply-To Email:</b></label>
+<input type="text" placeholder="When the person you prank presses reply it will have them reply to this email" name="replyto" id="replyto">
 <label for="toemailAddress"><b><font color="red"><sup>*</sup></font>To:</b></label>
 <input type="email" placeholder="Enter a E-mail Address you want to send mail" name="to" id="toemailAddress" required><br>
 <label for="subject"><b>Subject</b></label>
@@ -82,7 +96,7 @@ else{
 <input id="button" type="submit" name="submit" value="Send" class="pulse-button">
 </fieldset>
 </form>
-  <div id="foot"><center>Copyright © 2018 | All rights reserved.</center></div>
+  <div id="foot"><center>Â© Copyright 2018 |All rights reserved.</center></div>
 </div>
 </body>
 </html>
